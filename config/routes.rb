@@ -5,5 +5,10 @@ Rails.application.routes.draw do
 
   get 'about', to: 'pages#about'
 
-  resources :articles
+  resources :articles do
+		get 'go_next'
+		get 'go_prev'
+  end
+
+  resources :blogs
 end

@@ -42,6 +42,28 @@ class ArticlesController < ApplicationController
 		redirect_to articles_path
 	end
 
+	def go_next 
+		@id = params[:article_id]
+		@articles = Article.all
+		@next = @articles.find_by("articles.id > ?", @id)
+		if @next && @next.id
+			redirect_to article_path(@next.id)
+		else
+			render 'index'
+		end
+	end
+
+	def go_prev
+		@id = params[:article_id]
+		@articles = Article.all
+		@prev = @articles.where("articles.id < ?", @id).last
+		if @prev && @prev.id
+			redirect_to article_path(@prev.id)
+		else
+			render 'index'
+		end
+	end
+
 	private
 		def set_article
 			@article = Article.find(params[:id])
