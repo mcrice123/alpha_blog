@@ -4,8 +4,8 @@
 
 <p>Description: <%= @article.description %></p>
 
-<%= link_to "Prev", article_go_prev_path(@article) %>
-<%= link_to "Next", article_go_next_path(@article) %>
-
 <%= link_to "Edit", edit_article_path(@article) %> |
 <%= link_to "Back to articles listing", articles_path %>
+<br/>
+<%= link_to "Prev", article_go_prev_path(@article) %> | 
+<%= link_to "Next", article_go_next_path(@article) %>
